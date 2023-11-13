@@ -2,66 +2,66 @@ from app import app, db
 from models import Movies
 
 movies = [
-    # {
-    #     "title": "The Shawshank Redemption",
-    #     "director": "Frank Darabont",
-    #     "year": 1994,
-    #     "genre": "Drama",
-    #     "kind": "Movie",
-    #     "duration": 142,
-    #     "description": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
-    #     "poster_url": "https://theposterdb.com/api/assets/20890",
-    #     "trailer_url": "https://www.youtube.com/watch?v=PLl99DlL6b4",
-    #     "price": 9.99
-    # },
-    # {
-    #     "title": "The Matrix",
-    #     "director": "The Wachowski Brothers",
-    #     "year": 1999,
-    #     "genre": "Action, Sci-Fi",
-    #     "kind": "Movie",
-    #     "duration": 136,
-    #     "description": "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
-    #     "poster_url": "https://theposterdb.com/api/assets/16566",
-    #     "trailer_url": "https://www.youtube.com/watch?v=vKQi3bBA1y8",
-    #     "price": 9.99
-    # },
-    # {
-    #     "title": "Star Wars: Episode V - The Empire Strikes Back",
-    #     "director": "Irvin Kershner",
-    #     "year": 1980,
-    #     "genre": "Action, Adventure, Fantasy",
-    #     "kind": "Movie",
-    #     "duration": 124,
-    #     "description": "After the Rebels are brutally overpowered by the Empire on the ice planet Hoth, Luke Skywalker begins Jedi training with Yoda, while his friends are pursued by Darth Vader and a bounty hunter named Boba Fett all over the galaxy.",
-    #     "poster_url": "https://theposterdb.com/api/assets/4450",
-    #     "trailer_url": "https://www.youtube.com/watch?v=JNwNXF9Y6kY",
-    #     "price": 9.99
-    # },
-    # {
-    #     "title": "Interstellar",
-    #     "director": "Christopher Nolan",
-    #     "year": 2014,
-    #     "genre": "Adventure, Drama, Sci-Fi",
-    #     "kind": "Movie",
-    #     "duration": 169,
-    #     "description": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
-    #     "poster_url": "https://theposterdb.com/api/assets/9308",
-    #     "trailer_url": "https://www.youtube.com/watch?v=zSWdZVtXT7E",
-    #     "price": 9.99
-    # },
-    # {
-    #     "title": "Avatar: The Way of Water",
-    #     "director": "James Cameron",
-    #     "year": 2022,
-    #     "genre": "Action, Adventure, Fantasy, Sci-Fi",
-    #     "kind": "Movie",
-    #     "duration": 162,
-    #     "description": "Jake Sully, a paralyzed former Marine, is recruited by a company to be a body for an Avatar AI, which is used to control a remotely operated vehicle to extract a valuable mineral from an alien planet. However, when the Avatar is attacked, Jake takes control and becomes stranded on the planet. As Jake explores the planet and its people, he uncovers a conspiracy that threatens the entire alien civilization.",
-    #     "poster_url": "https://theposterdb.com/api/assets/303877",
-    #     "trailer_url": "https://www.youtube.com/watch?v=a8Gx8wiNbs8",
-    #     "price": 9.99
-    # },
+    {
+        "title": "The Shawshank Redemption",
+        "director": "Frank Darabont",
+        "year": 1994,
+        "genre": "Drama",
+        "kind": "Movie",
+        "duration": 142,
+        "description": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+        "poster_url": "https://theposterdb.com/api/assets/20890",
+        "trailer_url": "https://www.youtube.com/watch?v=PLl99DlL6b4",
+        "price": 9.99
+    },
+    {
+        "title": "The Matrix",
+        "director": "The Wachowski Brothers",
+        "year": 1999,
+        "genre": "Action, Sci-Fi",
+        "kind": "Movie",
+        "duration": 136,
+        "description": "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
+        "poster_url": "https://theposterdb.com/api/assets/16566",
+        "trailer_url": "https://www.youtube.com/watch?v=vKQi3bBA1y8",
+        "price": 9.99
+    },
+    {
+        "title": "Star Wars: Episode V - The Empire Strikes Back",
+        "director": "Irvin Kershner",
+        "year": 1980,
+        "genre": "Action, Adventure, Fantasy",
+        "kind": "Movie",
+        "duration": 124,
+        "description": "After the Rebels are brutally overpowered by the Empire on the ice planet Hoth, Luke Skywalker begins Jedi training with Yoda, while his friends are pursued by Darth Vader and a bounty hunter named Boba Fett all over the galaxy.",
+        "poster_url": "https://theposterdb.com/api/assets/4450",
+        "trailer_url": "https://www.youtube.com/watch?v=JNwNXF9Y6kY",
+        "price": 9.99
+    },
+    {
+        "title": "Interstellar",
+        "director": "Christopher Nolan",
+        "year": 2014,
+        "genre": "Adventure, Drama, Sci-Fi",
+        "kind": "Movie",
+        "duration": 169,
+        "description": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+        "poster_url": "https://theposterdb.com/api/assets/9308",
+        "trailer_url": "https://www.youtube.com/watch?v=zSWdZVtXT7E",
+        "price": 9.99
+    },
+    {
+        "title": "Avatar: The Way of Water",
+        "director": "James Cameron",
+        "year": 2022,
+        "genre": "Action, Adventure, Fantasy, Sci-Fi",
+        "kind": "Movie",
+        "duration": 162,
+        "description": "Jake Sully, a paralyzed former Marine, is recruited by a company to be a body for an Avatar AI, which is used to control a remotely operated vehicle to extract a valuable mineral from an alien planet. However, when the Avatar is attacked, Jake takes control and becomes stranded on the planet. As Jake explores the planet and its people, he uncovers a conspiracy that threatens the entire alien civilization.",
+        "poster_url": "https://theposterdb.com/api/assets/303877",
+        "trailer_url": "https://www.youtube.com/watch?v=a8Gx8wiNbs8",
+        "price": 9.99
+    },
     {
         "title": "Onward",
         "director": "Dan Scanlon",
@@ -121,7 +121,67 @@ movies = [
         "poster_url": "https://theposterdb.com/api/assets/111173",
         "trailer_url": "https://www.youtube.com/watch?v=xOsLIiBStEs",
         "price": 7.99
-    }
+    },
+    {
+        "title": "Loki",
+        "director": "Dan Deleeuw",
+        "year": 2021,
+        "genre": "Action, Adventure, Fantasy",
+        "kind": "TV Series",
+                "duration": 40,
+                "description": "The mercurial villain Loki resumes his role as the God of Mischief in a new series that takes place after the events of “Avengers: Endgame.”",
+                "poster_url": "https://theposterdb.com/api/assets/157410",
+                "trailer_url": "https://www.youtube.com/watch?v=nW948Va-l10",
+                "price": 19.99
+    },
+    {
+        "title": "Supernatural",
+        "director": "Jensen Ackles",
+        "year": 2005,
+        "genre": "Drama, Fantasy, Horror, Mystery, Thriller",
+        "kind": "TV Series",
+                "duration": 60,
+                "description": "Two brothers follow their father's footsteps as hunters, fighting evil supernatural beings of many kinds, including monsters, demons and gods that roam the earth.",
+                "poster_url": "https://theposterdb.com/api/assets/274004",
+                "trailer_url": "https://www.youtube.com/watch?v=HPKiZaEzMko",
+                "price": 19.99
+    },
+    {
+        "title": "H2O: Just Add Water",
+        "director": "Jonathan M. Shiff",
+        "year": 2006,
+        "genre": "Adventure, Comedy, Drama, Family, Fantasy",
+        "kind": "TV Series",
+                "duration": 30,
+                "description": "A group of five ordinary teenagers discover they have special abilities when they come into contact with a mysterious boy in a comic book.",
+                "poster_url": "https://theposterdb.com/api/assets/96620",
+                "trailer_url": "https://www.youtube.com/watch?v=wqHED34TcwU",
+                "price": 19.99
+    },
+    {
+        "title": "Gossip Girl",
+        "director": "Mark Piznarski",
+        "year": 2007,
+        "genre": "Drama, Romance",
+        "kind": "TV Series",
+                "duration": 40,
+                "description": "Privileged teenager Jordyn Jones and her friends are depicted as they navigate the treacherous world of upper-class Manhattan teen life, school, love and betrayal.",
+                "poster_url": "https://theposterdb.com/api/assets/390553",
+                "trailer_url": "https://www.youtube.com/watch?v=eCg1RN-dyQk",
+                "price": 19.99
+    },
+    {
+        "title": "Superman & Lois",
+        "director": "Todd Helbing",
+        "year": 2021,
+        "genre": "Action, Adventure, Drama",
+        "kind": "TV Series",
+                "duration": 40,
+                "description": "The world's most famous superhero and comic books' most famous journalist face the pressures and complexities that come with balancing work, justice, and parenthood in today's society.",
+                "poster_url": "https://theposterdb.com/api/assets/134550",
+                "trailer_url": "https://www.youtube.com/watch?v=SJPJPUpNvDw",
+                "price": 19.99
+    },
 ]
 
 with app.app_context():
