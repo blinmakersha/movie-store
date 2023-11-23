@@ -1,64 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
+
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Quokka</title>
 		<link rel="stylesheet" type="text/css" href="/static/style.css" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 	</head>
+
 	<body>
-		{% with messages = get_flashed_messages() %} {% if messages %} {% for msg in
-		messages %}
-		<p>{{msg}}</p>
+		{% with messages = get_flashed_messages() %}
+		{% if messages %}
+		{% for msg in messages %}
+			<p>{{msg}}</p>
 		{% endfor %} {% endif %} {% endwith %}
-		<nav class="nav">
-			<a
-				href="{{url_for('home')}}"
-				class="nav-item is-active"
-				active-color="rebeccapurple"
-				>Home</a
-			>
-			<a href="{{url_for('login')}}" class="nav-item" active-color="orange"
-				>Login</a
-			>
-			<a href="{{url_for('register')}}" class="nav-item" active-color="green"
-				>Register</a
-			>
-			<a href="{{url_for('logout')}}" class="nav-item" active-color="blue"
-				>Logout</a
-			>
-			<span class="nav-indicator"></span>
+		<nav class="navbar">
+			<div class="container navbar__wrapper">
+				<div class="navbar__menu">
+					<a href="{{url_for('home')}}">main page</a>
+					<a href="">films</a>
+					<a href="">tv series</a>
+					<a href="">cartoons</a>
+				</div>
+				<div class="navbar__logo">
+					<img src="./static/content/BRANDNAME.svg" alt="quokka">
+				</div>
+				<div class="navbar__menu">
+					<a href="">search</a>
+					<a href="{{url_for('login')}}">login</a>
+					<a href="{{url_for('register')}}">register</a>
+				</div>
+			</div>
 		</nav>
-		<div>
-			<form action="/contact" method="post">
-				<div class="form-field">
-					<input
-						type="text"
-						name="email"
-						placeholder="Введите email"
-						required=""
-					/>
+		<header class="header">
+			<video playsinline autoplay muted loop>
+				<source src="./static/content/john wick.webm" type="video/webm">
+			</video>
+			<div class="container">
+				<a class="header__offer" href="#">
+					<h1 class="header__title">
+						Harry Potter and the Deathly Hallows
+					</h1>
+					<h3 class="header__subtitle">
+						watch now
+					</h3>
+					<div class="header__img">
+						<img src="/static/content/play_button.svg" alt="play button">
+					</div>
+				</a>
+			</div>
+		</header>
+		<section class="popular">
+			<div class=" popular__wrapper">
+				<div class="popular__items">
+					<div class="swiper mySwiper">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								<div class="popular__img">
+									<img src="./static/content/photo_film#1.png" alt="">
+								</div>
+								<div class="popular__content">
+									<p class="popular__name">film #1</p>
+									<p class="popular__date-relise">2023</p>
+								</div>
+							</div>
+							<div class="swiper-slide">
+								<div class="popular__img">
+									<img src="./static/content/photo_film#1.png" alt="">
+								</div>
+								<div class="popular__content">
+									<p class="popular__name">film #1</p>
+									<p class="popular__date-relise">2023</p>
+								</div>
+							</div>
+							<div class="swiper-slide">
+								<div class="popular__img">
+									<img src="./static/content/photo_film#1.png" alt="">
+								</div>
+								<div class="popular__content">
+									<p class="popular__name">film #1</p>
+									<p class="popular__date-relise">2023</p>
+								</div>
+							</div>
+							<div class="swiper-slide">
+								<div class="popular__img">
+									<img src="./static/content/photo_film#1.png" alt="">
+								</div>
+								<div class="popular__content">
+									<p class="popular__name">film #1</p>
+									<p class="popular__date-relise">2023</p>
+								</div>
+							</div>
+							<div class="swiper-slide">
+								<div class="popular__img">
+									<img src="./static/content/photo_film#1.png" alt="">
+								</div>
+								<div class="popular__content">
+									<p class="popular__name">film #1</p>
+									<p class="popular__date-relise">2023</p>
+								</div>
+							</div>
+							<div class="swiper-slide">
+								<div class="popular__img">
+									<img src="./static/content/photo_film#1.png" alt="">
+								</div>
+								<div class="popular__content">
+									<p class="popular__name">film #1</p>
+									<p class="popular__date-relise">2023</p>
+								</div>
+							</div>
+							<div class="swiper-slide">
+								<div class="popular__img">
+									<img src="./static/content/photo_film#1.png" alt="">
+								</div>
+								<div class="popular__content">
+									<p class="popular__name">film #1</p>
+									<p class="popular__date-relise">2023</p>
+								</div>
+							</div>
+							<div class="swiper-slide">
+								<div class="popular__img">
+									<img src="./static/content/photo_film#1.png" alt="">
+								</div>
+								<div class="popular__content">
+									<p class="popular__name">film #1</p>
+									<p class="popular__date-relise">2023</p>
+								</div>
+							</div>
+						</div>
+						<div class="swiper-pagination"></div>
+					</div>
 				</div>
-				<div class="form-field">
-					<input
-						type="text"
-						name="phone"
-						placeholder="Введите телефон"
-						required=""
-					/>
-				</div>
-				<div class="form-field">
-					<input
-						type="text"
-						name="message"
-						placeholder="Введите сообщение"
-						required=""
-					/>
-				</div>
-				<div class="form-field">
-					<button class="btn" type="submit">Свяжитесь со мной</button>
-				</div>
-			</form>
-		</div>
+			</div>
+		</section>
+
+		<section class="form">
+			<div class="container form__wrapper">
+				<form action="/contact" method="post">
+					<div class="form-field">
+						<p>Email</p>
+						<input
+							type="text"
+							name="email"
+							placeholder="Введите email"
+							required=""
+						/>
+					</div>
+					<div class="form-field">
+						<p>Ваш телефон</p>
+						<input
+							type="text"
+							name="phone"
+							placeholder="Введите телефон"
+							required=""
+						/>
+					</div>
+					<div class="form-field">
+						<p>Сообщение</p>
+						<textarea
+							type="text"
+							name="message"
+							placeholder="Введите сообщение"
+							required=""
+						></textarea>
+					</div>
+					<div class="form-btn">
+						<button class="btn" type="submit">Свяжитесь с нами</button>
+					</div>
+				</form>
+			</div>
+		</section>
+
+		<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+	
+		<!-- Initialize Swiper -->
+		<script>
+			var swiper = new Swiper(".mySwiper", {
+				slidesPerView: 7,
+				spaceBetween: 30,
+				speed: 2000,
+				loop: true,
+				autoplay: {
+					delay: 1000,
+				},
+				parallax: true,
+			});
+		</script>
+
 	</body>
 </html>
