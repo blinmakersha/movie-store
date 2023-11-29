@@ -17,7 +17,6 @@ def api_index():
 
 
 @api_bp.route('/get_movies')
-@token_required
 def get_movies():
     movies = Movies.query.all()
     result = {}

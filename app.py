@@ -1,7 +1,7 @@
 from datetime import datetime
 
-from flask import (Flask, Response, flash, redirect, render_template, request,
-                   session, url_for)
+from flask import (Flask, Response, flash, make_response, redirect,
+                   render_template, request, session, url_for)
 from flask_admin import Admin
 from flask_login import (LoginManager, current_user, login_required,
                          login_user, logout_user)
@@ -55,21 +55,20 @@ def load_user(user_id):
 @app.route("/index/")
 @app.route('/')
 def home():
-    session.clear()
     session.modified = True
-    session["Cart"] = {"items": {}, "total": 0}
-    return render_template('home.html')
+    if not session["Cart"]:
+        session["Cart"] = {"items": {}, "total": 0}
+    movies = Movies.query.all()
+    return render_template('home.html', movies=movies)
 
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    if current_user.is_authenticated:
+        return redirect('/')
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
-        users = User.query.all()
-        for user in users:
-            print(user.email)
-            print('hi')
         try:
             user = User.query.filter(User.email == email).one()
         except:
@@ -78,7 +77,7 @@ def login():
         if check_password_hash(user.password, password):
             if user.role == 2:
                 login_user(user)
-                return render_template('home.html')
+                return redirect("/")
             else:
                 login_user(user)
                 return redirect('/admin')
@@ -98,6 +97,8 @@ def logout():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    if current_user.is_authenticated:
+        return redirect('/')
     if request.method == 'POST':
         name = request.form.get("name")
         email = request.form.get("email")
@@ -132,18 +133,18 @@ def contact():
     return render_template('contact.html')
 
 
-@app.route('/catalog')
-def catalog():
+@app.route('/films')
+def films():
     movies = Movies.query.all()
-    return render_template('catalog.html', movies=movies)
+    return render_template('films.html', movies=movies)
 
 
 @app.route('/item/<int:movie_id>', methods=['GET', 'POST'])
 def show_item(movie_id: int):
-    if request.method == 'POST':
+    if request.method == 'GET':
         item = Movies.query.filter(
             Movies.id == movie_id).first()
-        return render_template('item.html', item=item)
+        return render_template('film.html', item=item)
     return Response("Данную страницу можно посетить только после посещения каталога", 404)
 
 
@@ -157,8 +158,8 @@ def add_to_cart(movie_id: int):
                 session.modified = True
             else:
                 session.modified = True
-        return redirect("/catalog")
-    return redirect("/catalog")
+        return redirect("/cart")
+    return redirect("/home")
 
 
 @app.route("/cart")
@@ -177,10 +178,6 @@ def cart():
 
 @app.route("/remove_item/")
 def remove_from_cart():
-    """
-    Функция для удаления фильма с корзины
-    :return: удаляет товар из сессии и перенаправляет на корзину
-    """
     movie_id = request.args.get("movie_id")
     session["Cart"]["items"].pop(str(movie_id))
     session.modified = True
@@ -200,9 +197,34 @@ def make_order():
                     new_order.cart.append(movie)
             db.session.add(new_order)
             db.session.commit()
+            session["Cart"] = {"items": {}, "total": 0}
             return redirect('/')
         else:
             return redirect("/login")
+    else:
+        return redirect("/")
+
+
+@app.route('/cookies')
+def cookies():
+    res = make_response("Send cookie")
+    res.set_cookie("Name", "Valya", max_age=60 * 60 * 24 * 365)
+    return res
+
+
+@app.route('/show_cookies')
+def show():
+    if request.cookies.get("Name"):
+        return "Hello" + request.cookies.get("Name")
+    else:
+        return "No cookies"
+
+
+@app.route('/delete_cookies')
+def delete_cookies():
+    res = make_response("Мы тебе удаляем куку")
+    res.set_cookie("Name", "aaa", max_age=0)
+    return res
 
 
 if __name__ == "__main__":

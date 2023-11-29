@@ -28,7 +28,7 @@ p {
 	margin: 0;
 	padding: 0;
 }
-button {
+.btn {
 	padding: 10px 0;
 	margin-top: 15px;
 	background: transparent;
@@ -68,16 +68,15 @@ section {
 	padding: 31px 0 31px;
 }
 .navbar__menu {
-	width: 30%;
-	/* margin-left: auto; */
 	display: flex;
 	gap: 36px;
 }
-.navbar__menu:nth-child(2) {
-	margin-right: auto;
+.navbar__menu:nth-child(1) {
+	justify-content: flex-end;
 }
 .navbar__logo {
-	margin: auto;
+	justify-content: center;
+	width: 28%;
 }
 .navbar__menu a {
 	color: #fcfcfc;
@@ -138,7 +137,7 @@ section {
 	justify-content: space-between;
 	padding-top: 56px;
 }
-.popular__img {
+.popular__img img {
 	flex-shrink: 0;
 	outline: none;
 	border-radius: 26px;
@@ -148,13 +147,35 @@ section {
 	height: 100%;
 }
 
+.header__title{
+	font-size: 52px;
+	font-weight: 600;
+	color: #fff;
+}
+
 .swiper-slide {
-	height: 300px !important;
+	/* height: 300px !important; */
 	display: grid;
 	gap: 15px;
 	text-align: left;
-	background: rgba(217, 217, 217, 1);
+	/* background: rgba(217, 217, 217, 1); */
 	border-radius: 26px;
+}
+
+.popular__content{
+	margin-top: 10px;
+	display: grid;
+	gap: 7px;
+}
+
+.popular__name {
+	font-size: 18px;
+	font-weight: 600;
+}
+
+.popular__year {
+	font-size: 14px;
+	font-weight: 300;
 }
 
 .swiper-pagination {
@@ -201,4 +222,64 @@ section {
 .form-field textarea{
 	outline: none;
 	resize: none;
+}
+
+/* film */
+.film {
+	background-color:#4b7092;
+	height: 100vh;
+	padding-bottom: 100px;
+}
+.film__wrapper{
+	display: flex;
+	/* justify-content: space-between; */
+	gap: 100px;
+}
+
+.film__img{
+	width: 30%;
+}
+.film__img img {
+	width: 100%;
+}
+
+.film_content{
+	gap: 20px;
+	display: grid;
+}
+
+.film_content p{
+	width: 50%;
+}
+
+.btn_film{
+	width: 200px;
+	background-color: #fff;
+	color: black;
+	font-size: 20px;
+	font-weight: 600;
+}
+
+/* cart__wrapper */
+.cart{
+	color: #fff;
+	background-color: #4b7092;
+	height: 100vh;
+}
+
+.cart__img img {
+	width: 150px;
+}
+
+.cart__content{
+	display: grid;
+}
+
+.btn_cart{
+	padding-top: 20px;
+	padding: 10px 10px;
+	background-color: #fff;
+	color: black;
+	width: 120px;
+	text-align: center;
 }

@@ -26,10 +26,18 @@
 				<div class="navbar__logo">
 					<img src="./static/content/BRANDNAME.svg" alt="quokka">
 				</div>
-				<div class="navbar__menu">
-					<a href="">search</a>
-					<a href="{{url_for('login')}}">login</a>
-					<a href="{{url_for('register')}}">register</a>
+				<div class="navbar__menu navbar__menu">
+					{% if current_user.is_authenticated %}
+						<a href="{{url_for('cart')}}">
+						<svg width="15px" class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="#fff" viewBox="0 0 18 21">
+							<path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
+						</svg>
+						</a>
+						<a href="{{url_for('logout')}}">logout</a>
+					{% else %}
+						<a href="{{url_for('login')}}">login</a>
+						<a href="{{url_for('register')}}">register</a>
+					{% endif %}
 				</div>
 			</div>
 		</nav>
@@ -39,9 +47,9 @@
 			</video>
 			<div class="container">
 				<a class="header__offer" href="#">
-					<h1 class="header__title">
-						Harry Potter and the Deathly Hallows
-					</h1>
+					<div class="header__title">
+						John Wick
+					</div>
 					<h3 class="header__subtitle">
 						watch now
 					</h3>
@@ -56,78 +64,17 @@
 				<div class="popular__items">
 					<div class="swiper mySwiper">
 						<div class="swiper-wrapper">
-							<div class="swiper-slide">
-								<div class="popular__img">
-									<img src="./static/content/photo_film#1.png" alt="">
-								</div>
-								<div class="popular__content">
-									<p class="popular__name">film #1</p>
-									<p class="popular__date-relise">2023</p>
-								</div>
-							</div>
-							<div class="swiper-slide">
-								<div class="popular__img">
-									<img src="./static/content/photo_film#1.png" alt="">
-								</div>
-								<div class="popular__content">
-									<p class="popular__name">film #1</p>
-									<p class="popular__date-relise">2023</p>
-								</div>
-							</div>
-							<div class="swiper-slide">
-								<div class="popular__img">
-									<img src="./static/content/photo_film#1.png" alt="">
-								</div>
-								<div class="popular__content">
-									<p class="popular__name">film #1</p>
-									<p class="popular__date-relise">2023</p>
-								</div>
-							</div>
-							<div class="swiper-slide">
-								<div class="popular__img">
-									<img src="./static/content/photo_film#1.png" alt="">
-								</div>
-								<div class="popular__content">
-									<p class="popular__name">film #1</p>
-									<p class="popular__date-relise">2023</p>
-								</div>
-							</div>
-							<div class="swiper-slide">
-								<div class="popular__img">
-									<img src="./static/content/photo_film#1.png" alt="">
-								</div>
-								<div class="popular__content">
-									<p class="popular__name">film #1</p>
-									<p class="popular__date-relise">2023</p>
-								</div>
-							</div>
-							<div class="swiper-slide">
-								<div class="popular__img">
-									<img src="./static/content/photo_film#1.png" alt="">
-								</div>
-								<div class="popular__content">
-									<p class="popular__name">film #1</p>
-									<p class="popular__date-relise">2023</p>
-								</div>
-							</div>
-							<div class="swiper-slide">
-								<div class="popular__img">
-									<img src="./static/content/photo_film#1.png" alt="">
-								</div>
-								<div class="popular__content">
-									<p class="popular__name">film #1</p>
-									<p class="popular__date-relise">2023</p>
-								</div>
-							</div>
-							<div class="swiper-slide">
-								<div class="popular__img">
-									<img src="./static/content/photo_film#1.png" alt="">
-								</div>
-								<div class="popular__content">
-									<p class="popular__name">film #1</p>
-									<p class="popular__date-relise">2023</p>
-								</div>
-							</div>
+							{% for movie in movies %}
+								<a href="item/{{ movie.id }}" class="swiper-slide">
+									<div class="popular__img">
+										<img src="../static/pics/{{ movie.id }}.jpeg" />
+									</div>
+									<div class="popular__content">
+										<p class="popular__name">{{ movie.title }}</p>
+										<p class="popular__date-relise">{{ movie.year }}</p>
+									</div>
+								</a>
+							{% endfor %}
 						</div>
 						<div class="swiper-pagination"></div>
 					</div>

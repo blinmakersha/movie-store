@@ -46,15 +46,15 @@ class OrderView(MyModelView):
     """
     View for '/admin/order'
     """
-    column_list = ("id", "user_id", "date", "cart", "total")
-    column_searchable_list = ["date"]
-    column_sortable_list = ["date"]
+    column_list = ('id', 'user_id', 'date', 'total')
+    column_searchable_list = ('id', 'user_id')
+    column_filters = ('id', 'user_id')
 
 
 class MoviesView(MyModelView):
     """
     View for '/admin/movies'
     """
-    column_list = ("id", "title", "price", "orders")
-    column_searchable_list = ["title", "price"]
-    column_sortable_list = ["title"]
+    column_list = ('id', 'title', 'director', 'year', 'genre', 'kind', 'duration', 'price')
+    column_searchable_list = ('title', 'director')
+    column_filters = ('title', 'director')
