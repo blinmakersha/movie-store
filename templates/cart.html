@@ -60,26 +60,15 @@
 						<div class="cart__img">
 							<img src="../static/pics/{{ movie_id }}.jpeg" alt="">
 						</div>
-						<a href="{{ url_for('remove_from_cart', movie_id = movie_id) }}"><span class="glyphicon glyphicon-remove"></span></a>
+						<a href="{{ url_for('remove_from_cart', movie_id = movie_id) }}">delete from cart</a>
 					</div>
 					{% endfor %}
 					<div class="cart__content">
-						<span class="itemName">Итого: ${{ cart["total"] }}</span>
-						<a class="btn btn_cart" href="{{ url_for('make_order') }}">Заказать</a>
+						<span class="itemName">Sum: ${{ cart["total"] }}</span>
+						<a class="btn btn_cart" href="{{ url_for('make_order') }}">Order</a>
 					</div>
 				</div>
 			</div>
 		</div>
-
-		<!-- The popover content -->
-
-
-		
-		<!-- JavaScript includes -->
-
-		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script> 
-		<script src="{{ url_for('static',filename='scripts/bootstrap.min.js') }}"></script>
-		<script src="{{ url_for('static',filename='scripts/customjs.js') }}"></script>
-
 	</body>
 </html>
