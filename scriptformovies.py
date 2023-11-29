@@ -182,6 +182,18 @@ movies = [
                 "trailer_url": "https://www.youtube.com/embed/SJPJPUpNvDw?si=slIToSe3_XB2LIoB",
                 "price": 19.99
     },
+    {
+        "title": "John Wick",
+        "director": "Chad Stahelski",
+        "year": 2014,
+        "genre": "Action, Mystery, Thriller",
+        "kind": "Movie",
+                "duration": 101,
+                "description": "Keanu Reeves stars as John Wick, a legendary hitman who comes out of retirement to seek revenge against the men who killed his puppy, a final gift from his recently deceased wife.",
+                "poster_url": "https://theposterdb.com/api/assets/17551",
+                "trailer_url": "https://www.youtube.com/embed/C0BMx-qxsP4?si=AYK56ly0QnVWhskS",
+                "price": 9.99
+    },
 ]
 
 with app.app_context():
