@@ -122,8 +122,8 @@ def contact():
         phone = request.form.get("phone")
         message = request.form.get("message")
         msg = Message("Клиент оставил обращение на сайте",
-                      sender='newsletters.with.love@gmail.com', recipients=[email])
-        msg.body = f"Номер телефона клиента: {phone}, сообщение от клиента: {message}"
+                      sender='newsletters.with.love@gmail.com', recipients='valentinakulg@gmail.com')
+        msg.body = f"Номер телефона клиента: {phone}, почта клиента: {email}, сообщение от клиента: {message}"
         try:
             mail.send(msg)
             flash('Успешно отправлено!', 'success')
