@@ -4,10 +4,12 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Login</title>
-		<link rel="stylesheet" type="text/css" href="/static/login.css" />
+		<link rel="stylesheet" type="text/css" href="/static/style.css" />
 	</head>
+
+	{% extends 'base.html' %} {% block content %}
 	<body>
-		<div class="container">
+		<div class="login__container">
 			<form action="/register" method="post">
 				<div class="login-form">
 					<h1>Register</h1>
@@ -45,4 +47,5 @@
 			</form>
 		</div>
 	</body>
+	{% endblock %}
 </html>

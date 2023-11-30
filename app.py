@@ -90,6 +90,7 @@ def login():
 @app.route('/logout', methods=['GET', 'POST'])
 @login_required
 def logout():
+    session["Cart"] = {"items": {}, "total": 0}
     logout_user()
     flash('Вы успешно вышли!', 'info')
     return redirect(url_for('home'))
@@ -135,8 +136,20 @@ def contact():
 
 @app.route('/films')
 def films():
-    movies = Movies.query.all()
+    movies = Movies.query.filter(Movies.kind == 'Movie')
     return render_template('films.html', movies=movies)
+
+
+@app.route('/tvseries')
+def tvseries():
+    tvseries = Movies.query.filter(Movies.kind == 'TV Series')
+    return render_template('tvseries.html', movies=tvseries)
+
+
+@app.route('/cartoons')
+def cartoons():
+    cartoons = Movies.query.filter(Movies.kind == 'Cartoon')
+    return render_template('cartoons.html', movies=cartoons)
 
 
 @app.route('/item/<int:movie_id>', methods=['GET', 'POST'])
