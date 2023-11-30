@@ -55,6 +55,7 @@ def load_user(user_id):
 @app.route("/index/", methods=['GET', 'POST'])
 @app.route('/', methods=['GET', 'POST'])
 def home():
+    # session.clear()
     session.modified = True
     session["Cart"] = {"items": {}, "total": 0}
     movies = Movies.query.all()
