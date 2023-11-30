@@ -1,0 +1,41 @@
+{% with messages = get_flashed_messages() %} {% if messages %} {% for msg in
+messages %}
+<p>{{msg}}</p>
+{% endfor %} {% endif %} {% endwith %}
+<nav class="navbar">
+	<div class="container navbar__wrapper">
+		<div class="navbar__menu">
+			<a href="{{url_for('home')}}">main page</a>
+			<a href="{{url_for('films')}}">films</a>
+			<a href="{{url_for('tvseries')}}">tv series</a>
+			<a href="{{url_for('cartoons')}}">cartoons</a>
+		</div>
+		<div class="navbar__logo">
+			<img src="../static/content/BRANDNAME.png" alt="quokka" />
+		</div>
+		<div class="navbar__menu navbar__menu">
+			{% if current_user.is_authenticated %}
+			<a href="{{url_for('cart')}}">
+				<svg
+					width="15px"
+					class="w-6 h-6 text-gray-800 dark:text-white"
+					aria-hidden="true"
+					xmlns="http://www.w3.org/2000/svg"
+					fill="#fff"
+					viewBox="0 0 18 21"
+				>
+					<path
+						d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"
+					/>
+				</svg>
+			</a>
+			<a href="{{url_for('logout')}}">logout</a>
+			{% else %}
+			<a href="{{url_for('login')}}">login</a>
+			<a href="{{url_for('register')}}">register</a>
+			{% endif %}
+		</div>
+	</div>
+</nav>
+
+{% block content %} {% endblock %}

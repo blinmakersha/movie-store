@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Quokka</title>
+		<link rel="stylesheet" type="text/css" href="/static/style.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+		/>
+	</head>
+
+	{% extends 'base.html' %} {% block content %}
+	<body>
+		<header class="header">
+			<video playsinline autoplay muted loop>
+				<source src="./static/content/john wick.webm" type="video/webm" />
+			</video>
+			<div class="container">
+				<a class="header__offer" href="item/16">
+					<div class="header__title">John Wick</div>
+					<h3 class="header__subtitle">watch now</h3>
+					<div class="header__img">
+						<img src="/static/content/play_button.svg" alt="play button" />
+					</div>
+				</a>
+			</div>
+		</header>
+		<section class="popular">
+			<div class="popular__wrapper">
+				<div class="popular__items">
+					<div class="swiper mySwiper">
+						<div class="swiper-wrapper">
+							{% for movie in movies %}
+							<a href="item/{{ movie.id }}" class="swiper-slide">
+								<div class="popular__img">
+									<img src="../static/pics/{{ movie.id }}.jpeg" />
+								</div>
+								<div class="popular__content">
+									<p class="popular__name">{{ movie.title }}</p>
+									<p class="popular__date-relise">{{ movie.year }}</p>
+								</div>
+							</a>
+							{% endfor %}
+						</div>
+						<div class="swiper-pagination"></div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="form">
+			<div class="container form__wrapper">
+				<form method="post">
+					<div class="form-field">
+						<p>Email</p>
+						<input
+							type="text"
+							name="email"
+							placeholder="Введите email"
+							required=""
+						/>
+					</div>
+					<div class="form-field">
+						<p>Ваш телефон</p>
+						<input
+							type="text"
+							name="phone"
+							placeholder="Введите телефон"
+							required=""
+						/>
+					</div>
+					<div class="form-field">
+						<p>Сообщение</p>
+						<textarea
+							type="text"
+							name="message"
+							placeholder="Введите сообщение"
+							required=""
+						></textarea>
+					</div>
+					<div class="form-btn">
+						<button class="btn" type="submit">Свяжитесь с нами</button>
+					</div>
+				</form>
+			</div>
+		</section>
+
+		<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+		<!-- Initialize Swiper -->
+		<script>
+			var swiper = new Swiper('.mySwiper', {
+				slidesPerView: 7,
+				spaceBetween: 30,
+				speed: 2000,
+				loop: true,
+				autoplay: {
+					delay: 1000,
+				},
+				parallax: true,
+			})
+		</script>
+	</body>
+	{% endblock %}
+</html>
